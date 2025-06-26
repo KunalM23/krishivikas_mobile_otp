@@ -8,14 +8,20 @@ const LoginForm = () => {
   const [apiOtp, setApiOtp] = useState('');
 
   const handleSendOtp = async () => {
+    if (!mobile) return alert("Please enter mobile number");
+
     try {
+      console.log("Clicked");
       const response = await sendOTP(mobile);
-      setApiOtp(response.data.otp);
+      const otp = response.data.result.response.otp;
+
+      setApiOtp(otp);
       setOtpSent(true);
     } catch (error) {
       console.error('Failed to send OTP', error);
     }
   };
+
 
   return (
     <div className="space-y-4">
@@ -29,6 +35,7 @@ const LoginForm = () => {
             onChange={(e) => setMobile(e.target.value)}
           />
           <button
+            type='button'
             onClick={handleSendOtp}
             className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
           >

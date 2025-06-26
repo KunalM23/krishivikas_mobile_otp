@@ -9,9 +9,11 @@ const api = axios.create({
   },
 });
 
-export const sendOTP = (mobile) => api.post('/otp-send', { mobile });
+export const sendOTP = (mobile) =>
+  api.post('/otp-send', { mobile });
 
-export const verifyLogin = (mobile) => api.post('/login', { mobile });
+export const verifyLogin = (mobile) =>
+  api.post('/login', { mobile });
 
 export const registerUser = (data) =>
   api.post('/register', data, {

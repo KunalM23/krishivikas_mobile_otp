@@ -3,12 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../services/api';
 
 const RegisterForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
@@ -28,96 +23,107 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 bg-white shadow-md p-6 rounded-lg">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="max-w-xl mx-auto bg-white p-6 shadow-lg rounded-lg space-y-5"
+    >
       <div>
-        <label className="block font-medium mb-1">Full Name</label>
+        <label className="block mb-1 font-medium">Full Name</label>
         <input
-          {...register('name', { required: 'Full name is required' })}
-          placeholder="John Doe"
-          className="w-full px-4 py-2 border rounded"
+          {...register('name')}
+          placeholder="Enter your full name"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
       </div>
 
       <div>
-        <label className="block font-medium mb-1">Mobile</label>
+        <label className="block mb-1 font-medium">Mobile</label>
         <input
-          {...register('mobile', { required: 'Mobile number is required' })}
-          placeholder="9876543210"
-          className="w-full px-4 py-2 border rounded"
+          {...register('mobile')}
+          placeholder="Enter your mobile number"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.mobile && <p className="text-red-500 text-sm">{errors.mobile.message}</p>}
       </div>
 
       <div>
-        <label className="block font-medium mb-1">Email</label>
+        <label className="block mb-1 font-medium">Email</label>
         <input
           {...register('email')}
-          placeholder="you@example.com"
-          className="w-full px-4 py-2 border rounded"
+          placeholder="Enter your email address"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-1">Company Name</label>
+        <label className="block mb-1 font-medium">Company Name</label>
         <input
           {...register('company_name')}
-          placeholder="ABC Pvt Ltd"
-          className="w-full px-4 py-2 border rounded"
+          placeholder="Company name (if any)"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-1">GST No</label>
+        <label className="block mb-1 font-medium">GST No</label>
         <input
           {...register('gst_no')}
-          placeholder="22ABCDE1234F1Z5"
-          className="w-full px-4 py-2 border rounded"
+          placeholder="e.g., 22ABCDE1234F1Z5"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-1">PAN No</label>
+        <label className="block mb-1 font-medium">PAN No</label>
         <input
           {...register('pan_no')}
-          placeholder="ABCDE1234F"
-          className="w-full px-4 py-2 border rounded"
+          placeholder="e.g., ABCDE1234F"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-1">Location ID</label>
+        <label className="block mb-1 font-medium">Location ID</label>
         <input
           {...register('location_id')}
-          placeholder="132050"
-          className="w-full px-4 py-2 border rounded"
+          placeholder="Location ID"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-1">Profile Image</label>
-        <input type="file" {...register('profile_image')} className="w-full" />
+        <label className="block mb-1 font-medium">Profile Image</label>
+        <input
+          type="file"
+          {...register('profile_image')}
+          className="w-full border border-gray-300 rounded px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-blue-600 file:text-white"
+        />
       </div>
 
       <div>
-        <label className="block font-medium mb-1">User Type ID</label>
+        <label className="block mb-1 font-medium">User Type ID</label>
         <input
           {...register('user_type_id')}
-          placeholder="1"
-          className="w-full px-4 py-2 border rounded"
+          placeholder="Enter user type ID (e.g., 1)"
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-1">Login Via</label>
-        <select {...register('login_via')} className="w-full px-4 py-2 border rounded">
+        <label className="block mb-1 font-medium">Login Via</label>
+        <select
+          {...register('login_via')}
+          className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
           <option value="">Select</option>
           <option value="ANDROID">ANDROID</option>
           <option value="IOS">IOS</option>
         </select>
       </div>
 
-      <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
+      <button
+        type="submit"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition duration-200"
+      >
         Submit
       </button>
     </form>
